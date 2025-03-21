@@ -1,0 +1,16 @@
+{
+  "name": "real-time-messaging-app",
+  "version": "1.0.0",
+  "description": "A real-time messaging application using Node.js, Express, and WebSocket.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "socket.io": "^4.0.0"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
