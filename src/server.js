@@ -8,13 +8,13 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "https://frosted-prickly-huckleberry.me", // Update this to match your front-end server's URL
+        origin: "https://endurable-guttural-sombrero.glitch.me/", // Update this to match your front-end server's URL
         methods: ["GET", "POST"]
     }
 });
 
 app.use(cors({
-    origin: "https://frosted-prickly-huckleberry.me", // Update this to match your front-end server's URL
+    origin: "https://endurable-guttural-sombrero.glitch.me/", // Update this to match your front-end server's URL
     methods: ["GET", "POST"]
 }));
 app.use(express.json());
