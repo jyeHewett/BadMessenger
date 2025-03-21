@@ -8,13 +8,13 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "http://127.0.0.1:8080", // Update this to match your front-end server's URL
+        origin: "https://frosted-prickly-huckleberry.me", // Update this to match your front-end server's URL
         methods: ["GET", "POST"]
     }
 });
 
 app.use(cors({
-    origin: "http://127.0.0.1:8080", // Update this to match your front-end server's URL
+    origin: "https://frosted-prickly-huckleberry.me", // Update this to match your front-end server's URL
     methods: ["GET", "POST"]
 }));
 app.use(express.json());
@@ -36,5 +36,13 @@ io.on('connection', (socket) => {
     });
 });
 
+// Function to log that the server is ready and awaiting users
+function logServerReady() {
+    console.log('Server is ready and awaiting users');
+}
+
 const PORT = process.env.PORT || 4000;
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    logServerReady();
+});
