@@ -8,13 +8,19 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "https://endurable-guttural-sombrero.glitch.me/", // Update this to match your front-end server's URL
+        origin: "https://endurable-guttural-sombrero.glitch.me", // Update this to match your front-end server's URL
         methods: ["GET", "POST"]
     }
 });
 
+// Set Content-Security-Policy headers
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' data: https://endurable-guttural-sombrero.glitch.me");
+    next();
+});
+
 app.use(cors({
-    origin: "https://endurable-guttural-sombrero.glitch.me/", // Update this to match your front-end server's URL
+    origin: "https://endurable-guttural-sombrero.glitch.me", // Update this to match your front-end server's URL
     methods: ["GET", "POST"]
 }));
 app.use(express.json());
@@ -39,6 +45,7 @@ io.on('connection', (socket) => {
 // Function to log that the server is ready and awaiting users
 function logServerReady() {
     console.log('Server is ready and awaiting users');
+    console.log(`Server is deployed at: ${server.address().address}:${server.address().port}`);
 }
 
 const PORT = process.env.PORT || 4000;
